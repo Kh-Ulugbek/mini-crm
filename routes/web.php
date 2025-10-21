@@ -5,7 +5,7 @@ use App\Http\Controllers\Customer\TicketController;
 
 
 Route::get('/', function () {
-    return redirect()->route('customer.ticket.index');
+    return redirect()->route('customer.ticket.widget');
 });
 
-Route::get('/ticket-form', [TicketController::class, 'index'])->name('customer.ticket.index');
+Route::get('/widget', [TicketController::class, 'widget'])->name('customer.ticket.widget');

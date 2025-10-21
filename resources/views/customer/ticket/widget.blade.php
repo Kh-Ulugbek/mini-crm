@@ -9,10 +9,10 @@
         <input class="form-input" type="text" name="phone" placeholder="Phone Number" required>
         <input class="form-input" type="text" name="title" placeholder="Theme" required>
         <textarea class="form-input" name="text" rows="4" placeholder="Text" required></textarea>
-        <button class="submit-button" type="submit">Yuborish</button>
+        <button class="submit-button" type="submit">Send</button>
     </form>
-    <div class="alert success">✅ Ariza muvaffaqiyatli yuborildi!</div>
-    <div class="alert error">❌ Xatolik yuz berdi, qayta urinib ko‘ring.</div>
+    <div class="alert success">✅ Ticket Successfully Created</div>
+    <div class="alert error">❌ Something went wrong.</div>
 </div>
 @endsection
 

@@ -4,14 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TicketRequest;
+use App\Http\Resources\TicketResource;
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class TicketController extends Controller
 {
+    /**
+     * Create User and Ticket
+     */
     public function store(TicketRequest $request)
     {
-        $user = User::firstOrCreate(
+        $user = User::query()->firstOrCreate(
             ['email' => $request->email],
             [
                 'name' => $request->name,
@@ -31,13 +37,13 @@ class TicketController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Ariza muvaffaqiyatli yuborildi.',
+            'message' => 'Ticket successfully created',
             'data' => new TicketResource($ticket),
         ]);
     }
 
     /**
-     * Statistikani olish (kunlik, haftalik, oylik)
+     * Statistics
      */
     public function statistics(Request $request)
     {
@@ -46,9 +52,9 @@ class TicketController extends Controller
         $monthAgo = now()->subDays(30);
 
         return response()->json([
-            'day' => Ticket::where('created_at', '>=', $today)->count(),
-            'week' => Ticket::where('created_at', '>=', $weekAgo)->count(),
-            'month' => Ticket::where('created_at', '>=', $monthAgo)->count(),
+            'day' => Ticket::query()->where('created_at', '>=', $today)->count(),
+            'week' => Ticket::query()->where('created_at', '>=', $weekAgo)->count(),
+            'month' => Ticket::query()->where('created_at', '>=', $monthAgo)->count(),
         ]);
     }
 }

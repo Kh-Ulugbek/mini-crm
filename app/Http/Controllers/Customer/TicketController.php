@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
-    public function index(): View
+    public function widget(): View
     {
-        return view('customer.ticket.index');
+        return view('customer.ticket.widget');
     }
 }
